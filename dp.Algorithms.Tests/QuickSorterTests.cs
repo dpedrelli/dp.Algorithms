@@ -9,7 +9,7 @@ namespace dp.Algorithms.Tests
         [InlineData(new int[] { 52, 96, 67, 71, 42, 38, 39, 40, 14 }, new int[] { 14, 38, 39, 40, 42, 52, 67, 71, 96 })]
         public void QuickSorter_SortIntegerArray_SortsArray(int[] array, int[] expected)
         {
-            var result = QuickSorter.SortArray(array, 0, array.Length - 1);
+            var result = QuickSorter.SortArray(array);
 
             Assert.NotNull(result);
             Assert.Equal(expected, result);

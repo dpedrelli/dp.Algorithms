@@ -2,7 +2,12 @@
 {
     public static class QuickSorter
     {
-        public static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        {
+            return SortArray<T>(array, 0, array.Length - 1);
+        }
+
+        private static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : struct, IComparable<T>
         {
             // Pseudo-code from Introduction to Algorithms, 3rd Edition, page 171.
             int q = 0;
