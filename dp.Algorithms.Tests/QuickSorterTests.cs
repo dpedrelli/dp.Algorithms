@@ -1,3 +1,5 @@
+using dp.Algorithms.Sorters;
+
 namespace dp.Algorithms.Tests
 {
     public class QuickSorterTests

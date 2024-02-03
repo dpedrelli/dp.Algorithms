@@ -1,4 +1,4 @@
-﻿namespace dp.Algorithms
+﻿namespace dp.Algorithms.Sorters
 {
     public static class QuickSorter
     {
@@ -33,9 +33,9 @@
             return i + 1;
         }
 
-        private static bool IsPrivotGreater<T>(T pivot, T compare) where T : struct, IComparable<T> 
+        private static bool IsPrivotGreater<T>(T pivot, T compare) where T : struct, IComparable<T>
         {
-            if (pivot.GetType() == typeof(Int32))
+            if (pivot.GetType() == typeof(int))
             {
                 return compare.CompareTo(pivot) > 0;
             }
