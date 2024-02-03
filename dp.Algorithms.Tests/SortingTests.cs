@@ -2,7 +2,7 @@ using dp.Algorithms.Sorters;
 
 namespace dp.Algorithms.Tests
 {
-    public class QuickSorterTests
+    public class SortingTests
     {
         [Theory]
         [InlineData(new int[] { 73, 57, 49, 99, 133, 20, 1 }, new int[] { 1, 20, 49, 57, 73, 99, 133 })]
