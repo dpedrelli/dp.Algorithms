@@ -1,5 +1,10 @@
 ﻿namespace dp.Algorithms.Sorters
 {
+    //
+    // Resources:
+    // https://code-maze.com/csharp-quicksort-algorithm/
+    // https://edutechlearners.com/download/Introduction_to_algorithms-3rd%20Edition.pdf
+
     public static class QuickSorter
     {
         public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>

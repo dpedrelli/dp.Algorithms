@@ -9,6 +9,15 @@ namespace dp.Algorithms.Tests
     public class HelperTests
     {
         [Fact]
+        public void SwapArray_1To2()
+        {
+            int[] original = { 1, 2 };
+            int[] expected = { 2, 1 };
+            HelperMethods.SwapArrayElements(original, 0, 1);
+            Assert.Equal(expected, original);
+        }
+
+        [Fact]
         public void Compare_2LessThan1_True()
         {
             Assert.True(HelperMethods.Is2LessThan1(2, 1));
