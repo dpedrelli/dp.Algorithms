@@ -32,5 +32,17 @@ namespace dp.Algorithms
 
             return array;
         }
+
+        public static int[] GenerateReverseIntegerArray(int size)
+        {
+            int[] array = new int[size];
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                array[i] = Int32.MaxValue - i;
+            }
+
+            return array;
+        }
     }
 }
