@@ -14,7 +14,8 @@ namespace dp.Algorithms.Sorters
             {
                 for (int j = array.Length - 1; j > i; j--)
                 {
-                    if (array[j].CompareTo(array[j-1]) < 0)
+                    //if (array[j].CompareTo(array[j-1]) < 0)
+                    if (HelperMethods.Is2GreaterThan1(array[j], array[j-1]))
                     {
                         HelperMethods.SwapArrayElements(array, j, j - 1);
                     }

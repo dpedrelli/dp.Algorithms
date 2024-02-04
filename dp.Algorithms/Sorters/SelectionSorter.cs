@@ -15,7 +15,8 @@ namespace dp.Algorithms.Sorters
                 var k = i;
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    if (array[j].CompareTo(array[k]) < 0)
+                    //if (array[j].CompareTo(array[k]) < 0)
+                    if (HelperMethods.Is2GreaterThan1(array[j], array[k]))
                     {
                         k = j;
                     }

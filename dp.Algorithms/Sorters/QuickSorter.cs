@@ -28,7 +28,8 @@
             for (int j = p; j < r; j++)
             {
                 //if (array[j] <= pivot)
-                if (!IsPrivotGreater(pivot, array[j]))
+                //if (!IsPrivotGreater(pivot, array[j]))
+                if (HelperMethods.Is2LessThan1(pivot, array[j]))
                 {
                     i++;
                     HelperMethods.SwapArrayElements(array, i, j);
@@ -38,13 +39,13 @@
             return i + 1;
         }
 
-        private static bool IsPrivotGreater<T>(T pivot, T compare) where T : struct, IComparable<T>
-        {
-            if (pivot.GetType() == typeof(int))
-            {
-                return compare.CompareTo(pivot) > 0;
-            }
-            return false;
-        }
+        //private static bool IsPrivotGreater<T>(T pivot, T compare) where T : struct, IComparable<T>
+        //{
+        //    if (pivot.GetType() == typeof(int))
+        //    {
+        //        return compare.CompareTo(pivot) > 0;
+        //    }
+        //    return false;
+        //}
     }
 }
