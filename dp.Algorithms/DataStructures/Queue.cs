@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class Queue<T> where T : struct
+    public class Queue<T>
     {
         private T[] _queue;
         private int start = -1;
