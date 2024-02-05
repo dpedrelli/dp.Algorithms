@@ -31,30 +31,34 @@ namespace dp.Algorithms.Sorters
         private static void Merge<T>(T[] array, int left, int middle, int right) where T : struct, IComparable<T>
         {
             var leftLength = (middle - left) + 1;
-            var leftArray = new T[leftLength + 1];
+            var leftArray = new T[leftLength];
             var rightLength = (right - middle);
-            var rightArray = new T[rightLength + 1];
+            var rightArray = new T[rightLength];
 
             Array.Copy(array, left, leftArray, 0, (middle - left) + 1);
             Array.Copy(array, middle + 1, rightArray, 0, right - middle);
 
-            var i = 0; var j = 0;
+            var i = 0; var j = 0; var k = left;
 
-            for (int k = left; k <= middle; k++)
+            //for (k = left; k < right; k++)
+            while (i < leftLength && j < rightLength)
             {
-                // Out of bounds array[7], left=4, middle=5, right=6, leftArray[2], rightArray[1], i=0, j=1, k=5
-                if ((i > leftArray.Length - 1) || (j > rightArray.Length - 1))
-                {
-                    continue;
-                }
                 if (!HelperMethods.Is2LessThan1(leftArray[i], rightArray[j]))
                 {
-                    array[k] = leftArray[i++];
+                    array[k++] = leftArray[i++];
                 }
                 else
                 {
-                    array[k] = rightArray[j++];
+                    array[k++] = rightArray[j++];
                 }
+            }
+            while (i < leftLength && k < array.Length)
+            {
+                array[k++] = leftArray[i++];
+            }
+            while (j < rightLength && k < array.Length)
+            {
+                array[k++] = rightArray[j++];
             }
         }
 
