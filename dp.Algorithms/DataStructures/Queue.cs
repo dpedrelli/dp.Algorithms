@@ -12,10 +12,10 @@ namespace dp.Algorithms
         private int start = -1;
         private int end = 0;
         public int Capacity => _queue.Length;
-        public bool IsFull => (start == end);
-        public bool IsEmpty => (start == -1);
+        public bool IsFull => start == end;
+        public bool IsEmpty => start == -1;
 
-        public Queue(int capacity) 
+        public Queue(int capacity)
         {
             if (capacity < 1)
             {
@@ -26,7 +26,7 @@ namespace dp.Algorithms
 
         public int NumberInQueue
         {
-            get 
+            get
             {
                 if (IsEmpty)
                 {
@@ -40,7 +40,7 @@ namespace dp.Algorithms
                 {
                     return end;
                 }
-                else 
+                else
                 {
                     return end + (Capacity - start);
                 }
@@ -74,7 +74,7 @@ namespace dp.Algorithms
                 start = -1;
                 end = 0;
             }
-            return item; 
+            return item;
         }
 
         public T Peek()
