@@ -12,16 +12,15 @@ namespace dp.Algorithms.Sorters
         {
             for (int i = 0; i < array.Length - 1; i++)
             {
-                var k = i;
+                var min = i;
                 for (int j = i + 1; j < array.Length; j++)
                 {
-                    //if (array[j].CompareTo(array[k]) < 0)
-                    if (HelperMethods.Is2GreaterThan1(array[j], array[k]))
+                    if (HelperMethods.Is2LessThan1(array[min], array[j]))
                     {
-                        k = j;
+                        min = j;
                     }
-                    HelperMethods.SwapArrayElements(array, i, k);
                 }
+                HelperMethods.SwapArrayElements(array, i, min);
             }
             return array;
         }
