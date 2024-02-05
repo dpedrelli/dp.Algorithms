@@ -18,9 +18,9 @@ namespace dp.Algorithms.Tests
         [InlineData(4, 3)]
         [InlineData(5, 5)]
         [InlineData(6, 8)]
-        public void Fibonacci_PassCount_ReturnsCorrect(int count, int expected)
+        public void Fibonacci_PassCount_ReturnsCorrect(int element, int expected)
         {
-            var result = FibonacciGenerator.GenerateNumber(count);
+            var result = FibonacciGenerator.GenerateNumber(element);
             Assert.Equal(expected, result);
         }
 

@@ -8,17 +8,17 @@ namespace dp.Algorithms.Recursion
 {
     public static class FibonacciGenerator
     {
-        public static int GenerateNumber(int count)
+        public static int GenerateNumber(int element)
         {
-            if (count == 0)
+            if (element == 0)
             {
                 return 0;
             }
-            else if (count == 1)
+            else if (element == 1)
             {
                 return 1;
             }
-            var value = GenerateNumber(count - 2) + GenerateNumber(count - 1);
+            var value = GenerateNumber(element - 2) + GenerateNumber(element - 1);
             return value;
         }
 
