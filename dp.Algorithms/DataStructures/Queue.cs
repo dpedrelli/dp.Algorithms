@@ -101,6 +101,8 @@ namespace dp.Algorithms
             for (int i = 0; i < _queue.Length; i++)
             {
                 var index = (start + i) % Capacity;
+                if (end > start && index < start) { continue; }
+                if (end > start && index >= end) { continue; }
                 if (index >= end && index < start) { continue; } // Allowing for wrapping arrays.
                 result += _queue[index].ToString();
             }
