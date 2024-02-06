@@ -213,5 +213,19 @@ namespace dp.Algorithms
             _current = _current.Previous;
             _size--;
         }
+
+        public void DeleteAll(T? value)
+        {
+            Reset();
+            var data = GetNext();
+            while (!HelperMethods.Is1EqualTo2(data, default))
+            {
+                if (HelperMethods.Is1EqualTo2(value, data))
+                {
+                    RemoveCurrent();
+                }
+                data = GetNext();
+            }
+        }
     }
 }

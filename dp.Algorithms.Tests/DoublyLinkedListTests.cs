@@ -229,5 +229,24 @@ namespace dp.Algorithms.Tests
             list.RemoveCurrent();
             Assert.Equal(11, list?.Current?.Data);
         }
+
+        [Fact]
+        public void DLinkedList_DeleteAll11_ConfirmNo11()
+        {
+            var list = new DoublyLinkedList<int>();
+            list.Append(10);
+            list.Append(11);
+            list.Append(12);
+            list.Append(11);
+            list.Append(13);
+            list.Append(11);
+            list.Append(14);
+            list.Append(11);
+            list.DeleteAll(11);
+            for (int i = 0; i < list.Size; i++)
+            {
+                Assert.NotEqual(11, list.GetNext());
+            }
+        }
     }
 }
