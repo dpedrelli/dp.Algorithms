@@ -54,6 +54,20 @@ namespace dp.Algorithms
             return Head!.Data;
         }
 
+        public T? PeekEnd()
+        {
+            if (_size == 0 || Head == null)
+            {
+                throw new Exception("Invalid list size.");
+            }
+            var node = Head;
+            while (node.Next != null) 
+            { 
+                node = node.Next;
+            }
+            return node.Data;
+        }
+
         public void InsertAt(T data, int index)
         {
             if (index < 0 || index > Size)
@@ -116,6 +130,25 @@ namespace dp.Algorithms
                 }
                 currentNode = currentNode?.Next;
             }
+        }
+
+        public void Append(T? data)
+        {
+            var node = new LinkedNode<T>(data);
+            if (Head == null)
+            {
+                Head = node;
+            }
+            else
+            {
+                var previous = Head;
+                while (previous.Next != null)
+                {
+                    previous = previous.Next;
+                }
+                previous.Next = node;
+            }
+            _size++;
         }
     }
 }
