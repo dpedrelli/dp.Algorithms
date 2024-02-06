@@ -108,7 +108,7 @@
         }
 
         [Fact]
-        public void Queue_EnqueueAndDequeueItems_ConfirmToStringResult()
+        public void ToString_Dequeue_Equalsdevildog()
         {
             var queue = new Queue<char>(15);
             queue.Enqueue('1');
@@ -133,7 +133,7 @@
         }
 
         [Fact]
-        public void ToString_WrappingItems_Equalsdevildog()
+        public void ToString_DequeueWrappingItems_Equalsdevildog()
         {
             var queue = new Queue<char>(10);
             queue.Enqueue('1');
