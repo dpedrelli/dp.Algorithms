@@ -165,5 +165,53 @@ namespace dp.Algorithms
                 return currentNode.Data;
             }
         }
+
+        public void Reset()
+        {
+            _current = null;
+        }
+
+        public T? GetNext()
+        {
+            if (_current == null)
+            {
+                _current = _head;
+            }
+            else
+            {
+                _current = _current.Next;
+            }
+            if (_current == null)
+            {
+                return default;
+            }
+            return _current.Data;
+        }
+
+        public void RemoveCurrent()
+        {
+            if (_current == null)
+            {
+                throw new Exception("No current element.");
+            }
+            if (_current.Previous != null)
+            {
+                _current.Previous.Next = _current.Next;
+            }
+            else
+            {
+                _head = _current.Next;
+            }
+            if (_current.Next != null)
+            {
+                _current.Next.Previous = _current.Previous;
+            }
+            else
+            {
+                _tail = _current.Previous;
+            }
+            _current = _current.Previous;
+            _size--;
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace dp.Algorithms.Tests
         }
 
         [Fact]
-        public void LinkedList_Prepend_ConfirmNode()
+        public void DLinkedList_Prepend_ConfirmNode()
         {
             var list = new DoublyLinkedList<int>();
             list.Prepend(10);
@@ -145,7 +145,7 @@ namespace dp.Algorithms.Tests
         }
 
         [Fact]
-        public void LinkedList_RemoveAt2_ConfirmRemoved()
+        public void DLinkedList_RemoveAt2_ConfirmRemoved()
         {
             var list = new DoublyLinkedList<int>();
             list.Append(10);
@@ -159,7 +159,7 @@ namespace dp.Algorithms.Tests
         }
 
         [Fact]
-        public void LinkedList_PeekEnd_Returns14()
+        public void DLinkedList_PeekEnd_Returns14()
         {
             var list = new DoublyLinkedList<int>();
             list.Append(10);
@@ -168,6 +168,66 @@ namespace dp.Algorithms.Tests
             list.Append(13);
             list.Append(14);
             Assert.Equal(14, list.PeekEnd());
+        }
+
+        [Fact]
+        public void DLinkedList_GetNextEmpty_ReturnsDefault()
+        {
+            var list = new DoublyLinkedList<int>();
+            Assert.Equal(0, list.GetNext());
+        }
+
+        [Fact]
+        public void DLinkedList_GetNext3Times_Returns101112()
+        {
+            var list = new DoublyLinkedList<int>();
+            list.Append(10);
+            list.Append(11);
+            list.Append(12);
+            list.Append(13);
+            list.Append(14);
+            Assert.Equal(10, list.GetNext());
+            Assert.Equal(11, list.GetNext());
+            Assert.Equal(12, list.GetNext());
+        }
+
+        [Fact]
+        public void DLinkedList_Reset_CurrentIsNull()
+        {
+            var list = new DoublyLinkedList<int>();
+            list.Append(10);
+            list.Append(11);
+            list.Append(12);
+            list.Append(13);
+            list.Append(14);
+            list.GetNext();
+            list.GetNext();
+            list.GetNext();
+            list.Reset();
+            Assert.Null(list.Current);
+        }
+
+        [Fact]
+        public void DLinkedList_RemoveCurrentEmpty_ReceiveError()
+        {
+            var list = new DoublyLinkedList<int>();
+            Assert.Throws<Exception>(() => list.RemoveCurrent());
+        }
+
+        [Fact]
+        public void DLinkedList_RemoveCurrent_Current11()
+        {
+            var list = new DoublyLinkedList<int>();
+            list.Append(10);
+            list.Append(11);
+            list.Append(12);
+            list.Append(13);
+            list.Append(14);
+            list.GetNext();
+            list.GetNext();
+            list.GetNext();
+            list.RemoveCurrent();
+            Assert.Equal(11, list?.Current?.Data);
         }
     }
 }
