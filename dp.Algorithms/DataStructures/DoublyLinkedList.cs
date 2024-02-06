@@ -86,6 +86,15 @@ namespace dp.Algorithms
             return Head!.Data;
         }
 
+        public T? PeekEnd()
+        {
+            if (_size == 0 || Tail == null)
+            {
+                throw new Exception("Invalid list size.");
+            }
+            return Tail!.Data;
+        }
+
         public T? RemoveFirst()
         {
             if (_size == 0 || Head == null)

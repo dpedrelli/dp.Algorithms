@@ -147,7 +147,7 @@ namespace dp.Algorithms.Tests
         [Fact]
         public void LinkedList_RemoveAt2_ConfirmRemoved()
         {
-            var list = new LinkedList<int>();
+            var list = new DoublyLinkedList<int>();
             list.Append(10);
             list.Append(11);
             list.Append(12);
@@ -156,6 +156,18 @@ namespace dp.Algorithms.Tests
             var data = list.RemoveAt(2);
             Assert.Equal(4, list.Size);
             Assert.Equal(12, data);
+        }
+
+        [Fact]
+        public void LinkedList_PeekEnd_Returns14()
+        {
+            var list = new DoublyLinkedList<int>();
+            list.Append(10);
+            list.Append(11);
+            list.Append(12);
+            list.Append(13);
+            list.Append(14);
+            Assert.Equal(14, list.PeekEnd());
         }
     }
 }
