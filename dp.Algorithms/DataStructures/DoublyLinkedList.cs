@@ -8,9 +8,12 @@ namespace dp.Algorithms
 {
     public class DoublyLinkedList<T> where T : IComparable<T>
     {
-        public DoublyLinkedNode<T>? Head { get; set; }
-        public DoublyLinkedNode<T>? Tail { get; set; }
-        public DoublyLinkedNode<T>? Current { get; set; }
+        private DoublyLinkedNode<T>? _head;
+        private DoublyLinkedNode<T>? _tail;
+        private DoublyLinkedNode<T>? _current;
+        public DoublyLinkedNode<T>? Head => _head;
+        public DoublyLinkedNode<T>? Tail => _tail;
+        public DoublyLinkedNode<T>? Current => _current;
         private int _size;
         public int Size { get { return _size; } }
         public bool IsEmpty => _size == 0;
@@ -18,15 +21,15 @@ namespace dp.Algorithms
         public void Prepend(T? data)
         {
             var node = new DoublyLinkedNode<T>(data);
-            node.Next = Head;
-            if (Head != null)
+            node.Next = _head;
+            if (_head != null)
             {
-                Head.Previous = node;
+                _head.Previous = node;
             }
-            Head = node;
-            if (Tail == null) 
+            _head = node;
+            if (_tail == null) 
             { 
-                Tail = node; 
+                _tail = node; 
             }
             _size++;
         }
@@ -34,15 +37,15 @@ namespace dp.Algorithms
         public void Append(T? data)
         {
             var node = new DoublyLinkedNode<T>(data);
-            node.Previous = Tail;
-            if (Tail != null)
+            node.Previous = _tail;
+            if (_tail != null)
             {
-                Tail.Next = node;
+                _tail.Next = node;
             }
-            Tail = node;
-            if (Head == null)
+            _tail = node;
+            if (_head == null)
             {
-                Head = node;
+                _head = node;
             }
             _size++;
         }
@@ -63,7 +66,7 @@ namespace dp.Algorithms
             }
             else
             {
-                var currentNode = Head;
+                var currentNode = _head;
                 var node = new DoublyLinkedNode<T>(data);
                 for (int i = 1; i < index; i++)
                 {
@@ -79,37 +82,37 @@ namespace dp.Algorithms
 
         public T? Peek()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            return Head!.Data;
+            return _head!.Data;
         }
 
         public T? PeekEnd()
         {
-            if (_size == 0 || Tail == null)
+            if (_size == 0 || _tail == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            return Tail!.Data;
+            return _tail!.Data;
         }
 
         public T? RemoveFirst()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            var data = Head!.Data;
-            Head = Head.Next;
-            if (Head == null)
+            var data = _head!.Data;
+            _head = _head.Next;
+            if (_head == null)
             {
-                Tail = null;
+                _tail = null;
             }
             else
             {
-                Head!.Previous = null;
+                _head!.Previous = null;
             }
             _size--;
             return data;
@@ -117,19 +120,19 @@ namespace dp.Algorithms
 
         public T? RemoveLast()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            var data = Tail!.Data;
-            Tail = Tail.Previous;
-            if (Tail == null)
+            var data = _tail!.Data;
+            _tail = _tail.Previous;
+            if (_tail == null)
             {
-                Head = null;
+                _head = null;
             }
             else
             {
-                Tail!.Next = null;
+                _tail!.Next = null;
             }
             _size--;
             return data;
@@ -151,7 +154,7 @@ namespace dp.Algorithms
             }
             else
             {
-                var currentNode = Head?.Next;
+                var currentNode = _head?.Next;
                 for (int i = 1; i < index; i++)
                 {
                     currentNode = currentNode?.Next;

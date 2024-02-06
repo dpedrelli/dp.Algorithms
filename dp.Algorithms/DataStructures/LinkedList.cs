@@ -9,7 +9,8 @@ namespace dp.Algorithms
 {
     public class LinkedList<T> where T : IComparable<T>
     {
-        public LinkedNode<T>? Head { get; set; }
+        private LinkedNode<T>? _head;
+        public LinkedNode<T>? Head => _head;
         private int _size;
         public int Size { get { return _size; } }
         public bool IsEmpty => _size == 0;
@@ -17,39 +18,39 @@ namespace dp.Algorithms
         public void Prepend(T data)
         {
             var node = new LinkedNode<T>(data);
-            node.Next = Head;
-            Head = node;
+            node.Next = _head;
+            _head = node;
             _size++;
         }
 
         public T? RemoveFirst()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            var data = Head!.Data;
-            Head = Head.Next;
+            var data = _head!.Data;
+            _head = _head.Next;
             _size--;
             return data;
         }
 
         public T? Peek()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            return Head!.Data;
+            return _head!.Data;
         }
 
         public T? PeekEnd()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            var node = Head;
+            var node = _head;
             while (node.Next != null) 
             { 
                 node = node.Next;
@@ -68,7 +69,7 @@ namespace dp.Algorithms
                 Prepend(data);
                 return;
             }
-            var currentNode = Head;
+            var currentNode = _head;
             var node = new LinkedNode<T>(data);
             for (int i = 1; i < index; i++)
             {
@@ -90,8 +91,8 @@ namespace dp.Algorithms
             {
                 return RemoveFirst();
             }
-            var currentNode = Head;
-            var nextNode = Head?.Next;
+            var currentNode = _head;
+            var nextNode = _head?.Next;
             for (int i = 1; i < index; i++)
             {
                 currentNode = nextNode;
@@ -104,7 +105,7 @@ namespace dp.Algorithms
 
         public void RemoveData(T? data)
         {
-            var currentNode = Head;
+            var currentNode = _head;
             var index = 0;
             while (currentNode != null) 
             {
@@ -123,13 +124,13 @@ namespace dp.Algorithms
         public void Append(T? data)
         {
             var node = new LinkedNode<T>(data);
-            if (Head == null)
+            if (_head == null)
             {
-                Head = node;
+                _head = node;
             }
             else
             {
-                var previous = Head;
+                var previous = _head;
                 while (previous.Next != null)
                 {
                     previous = previous.Next;

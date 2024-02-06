@@ -31,7 +31,7 @@ namespace dp.Algorithms.Tests
             var list = new DoublyLinkedList<int>();
             list.Prepend(10);
             Assert.Equal(1, list.Size);
-            Assert.Equal(10, list?.Head?.Data);
+            Assert.Equal(10, list?._head?.Data);
         }
 
         [Fact]
@@ -41,12 +41,12 @@ namespace dp.Algorithms.Tests
             list.Prepend(10);
             list.Prepend(11);
             Assert.Equal(2, list.Size);
-            Assert.Equal(11, list?.Head?.Data);
-            Assert.Null(list?.Head?.Previous);
-            Assert.Equal(10, list?.Head?.Next?.Data);
-            Assert.NotNull(list?.Head?.Next?.Previous);
-            Assert.Equal(11, list?.Head?.Next?.Previous?.Data);
-            Assert.Equal(10, list?.Tail?.Data);
+            Assert.Equal(11, list?._head?.Data);
+            Assert.Null(list?._head?.Previous);
+            Assert.Equal(10, list?._head?.Next?.Data);
+            Assert.NotNull(list?._head?.Next?.Previous);
+            Assert.Equal(11, list?._head?.Next?.Previous?.Data);
+            Assert.Equal(10, list?._tail?.Data);
         }
 
         [Fact]
@@ -69,10 +69,10 @@ namespace dp.Algorithms.Tests
             list.Append(14);
             list.Append(15);
             Assert.Equal(6, list.Size);
-            Assert.Equal(10, list?.Head?.Data);
-            Assert.Equal(11, list?.Head?.Next?.Data);
-            Assert.Equal(14, list?.Tail?.Previous?.Data);
-            Assert.Equal(15, list?.Tail?.Data);
+            Assert.Equal(10, list?._head?.Data);
+            Assert.Equal(11, list?._head?.Next?.Data);
+            Assert.Equal(14, list?._tail?.Previous?.Data);
+            Assert.Equal(15, list?._tail?.Data);
         }
 
         [Fact]
@@ -82,8 +82,8 @@ namespace dp.Algorithms.Tests
             list.Append(10);
             var value = list.RemoveFirst();
             Assert.True(list.IsEmpty);
-            Assert.Null(list.Head);
-            Assert.Null(list.Tail);
+            Assert.Null(list._head);
+            Assert.Null(list._tail);
             Assert.Equal(10, value);
         }
 
@@ -99,8 +99,8 @@ namespace dp.Algorithms.Tests
             var value = list.RemoveFirst();
             Assert.Equal(10, value);
             Assert.False(list.IsEmpty);
-            Assert.Equal(11, list.Head?.Data);
-            Assert.Equal(14, list.Tail?.Data);
+            Assert.Equal(11, list._head?.Data);
+            Assert.Equal(14, list._tail?.Data);
         }
 
         [Fact]
@@ -115,8 +115,8 @@ namespace dp.Algorithms.Tests
             var value = list.RemoveLast();
             Assert.Equal(14, value);
             Assert.False(list.IsEmpty);
-            Assert.Equal(10, list.Head?.Data);
-            Assert.Equal(13, list.Tail?.Data);
+            Assert.Equal(10, list._head?.Data);
+            Assert.Equal(13, list._tail?.Data);
         }
 
         [Fact]
@@ -130,18 +130,18 @@ namespace dp.Algorithms.Tests
             list.Append(14);
             list.InsertAt(16, 2);
             Assert.Equal(6, list.Size);
-            Assert.Equal(10, list?.Head?.Data);
-            Assert.Equal(11, list?.Head?.Next?.Data);
+            Assert.Equal(10, list?._head?.Data);
+            Assert.Equal(11, list?._head?.Next?.Data);
 
-            Assert.Equal(11, list?.Head?.Next?.Next?.Previous?.Data);
-            Assert.Equal(16, list?.Head?.Next?.Next?.Data);
+            Assert.Equal(11, list?._head?.Next?.Next?.Previous?.Data);
+            Assert.Equal(16, list?._head?.Next?.Next?.Data);
 
-            Assert.Equal(12, list?.Head?.Next?.Next?.Next?.Data);
-            Assert.Equal(16, list?.Head?.Next?.Next?.Next?.Previous?.Data);
+            Assert.Equal(12, list?._head?.Next?.Next?.Next?.Data);
+            Assert.Equal(16, list?._head?.Next?.Next?.Next?.Previous?.Data);
 
-            Assert.Equal(13, list?.Head?.Next?.Next?.Next?.Next?.Data);
-            Assert.Equal(14, list?.Head?.Next?.Next?.Next?.Next?.Next?.Data);
-            Assert.Equal(14, list?.Tail?.Data);
+            Assert.Equal(13, list?._head?.Next?.Next?.Next?.Next?.Data);
+            Assert.Equal(14, list?._head?.Next?.Next?.Next?.Next?.Next?.Data);
+            Assert.Equal(14, list?._tail?.Data);
         }
 
         [Fact]
