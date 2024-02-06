@@ -85,5 +85,21 @@ namespace dp.Algorithms.Tests
             stack.Push(3);
             Assert.Equal("123", stack.ToString());
         }
+
+        [Fact]
+        public void Stack_DoubleCapacity_ConfirmNewCapacity()
+        {
+            var stack = new Stack<int>(5);
+            stack.DoubleCapacity();
+            Assert.Equal(10, stack.Capacity);
+        }
+
+        [Fact]
+        public void Stack_HalveCapacity_ConfirmNewCapacity()
+        {
+            var stack = new Stack<int>(10);
+            stack.HalveCapacity();
+            Assert.Equal(5, stack.Capacity);
+        }
     }
 }

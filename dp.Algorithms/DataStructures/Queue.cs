@@ -108,5 +108,15 @@ namespace dp.Algorithms
             }
             return result;
         }
+
+        public void DoubleCapacity()
+        {
+            ChangeCapacity(Capacity * 2);
+        }
+
+        public void HalveCapacity()
+        {
+            ChangeCapacity(Capacity / 2);
+        }
     }
 }

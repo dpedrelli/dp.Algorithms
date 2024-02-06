@@ -156,5 +156,21 @@
             queue.Enqueue('g');
             Assert.Equal("devildog", queue.ToString());
         }
+
+        [Fact]
+        public void Queue_DoubleCapacity_ConfirmNewCapacity()
+        {
+            var queue = new Queue<int>(5);
+            queue.DoubleCapacity();
+            Assert.Equal(10, queue.Capacity);
+        }
+
+        [Fact]
+        public void Queue_HalveCapacity_ConfirmNewCapacity()
+        {
+            var queue = new Queue<int>(10);
+            queue.HalveCapacity();
+            Assert.Equal(5, queue.Capacity);
+        }
     }
 }
