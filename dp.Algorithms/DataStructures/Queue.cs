@@ -104,7 +104,7 @@ namespace dp.Algorithms
                 if (end > start && index < start) { continue; }
                 if (end > start && index >= end) { continue; }
                 if (index >= end && index < start) { continue; } // Allowing for wrapping arrays.
-                result += _queue[index].ToString();
+                result += _queue[index]?.ToString();
             }
             return result;
         }
