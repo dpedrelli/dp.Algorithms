@@ -16,4 +16,16 @@ namespace dp.Algorithms
             Data = data;
         }
     }
+    public class DoublyLinkedNode<T> where T : IComparable<T>
+    {
+        public T? Data { get; set; }
+        public DoublyLinkedNode<T>? Previous { get; set; }
+        public DoublyLinkedNode<T>? Next { get; set; }
+
+        public DoublyLinkedNode(T? data, DoublyLinkedNode<T>? previous = null)
+        {
+            Data = data;
+            Previous = previous;
+        }
+    }
 }

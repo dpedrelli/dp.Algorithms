@@ -69,15 +69,14 @@ namespace dp.Algorithms
                 return;
             }
             var currentNode = Head;
-            var nextNode = Head?.Next;
             var node = new LinkedNode<T>(data);
             for (int i = 1; i < index; i++)
             {
-                currentNode = nextNode;
-                nextNode = currentNode?.Next;
+                currentNode = currentNode?.Next;
             }
+            node.Next = currentNode?.Next;
             currentNode.Next = node;
-            node.Next = nextNode;
+            
             _size++;
         }
 

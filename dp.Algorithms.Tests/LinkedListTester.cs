@@ -10,6 +10,13 @@ namespace dp.Algorithms.Tests
     public class LinkedListTester
     {
         [Fact]
+        public void LinkedList_Instantiate_NotNull()
+        {
+            var list = new LinkedList<int>();
+            Assert.NotNull(list);
+        }
+
+        [Fact]
         public void LinkedList_RemoveEmpty_ReceiveError()
         {
             var list = new LinkedList<int>();
