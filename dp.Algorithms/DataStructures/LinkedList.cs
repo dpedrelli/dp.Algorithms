@@ -7,17 +7,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace dp.Algorithms
 {
-    public class LinkedNode<T> where T : IComparable<T>
-    {
-        public T? Data { get; set; }
-        public LinkedNode<T>? Next { get; set; }
-
-        public LinkedNode(T? data)
-        {
-            Data = data;
-        }
-    }
-
     public class LinkedList<T> where T : IComparable<T>
     {
         public LinkedNode<T>? Head { get; set; }
