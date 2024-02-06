@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
     public class ListBasedStack<T> where T : IComparable<T>
     {
-        public LinkedNode<T>? Head { get; set; }
+        private LinkedNode<T>? _head;
+        public LinkedNode<T>? Head => _head;
         private int _size;
         public int Size { get { return _size; } }
         public bool IsEmpty => _size == 0;
@@ -16,18 +18,18 @@ namespace dp.Algorithms
         public void Push(T data)
         {
             var node = new LinkedNode<T>(data);
-            node.Next = Head;
-            Head = node;
+            node.Next = _head;
+            _head = node;
             _size++;
         }
 
         public T? Peek()
         {
-            if (_size == 0 || Head == null)
+            if (_size == 0 || _head == null)
             {
                 throw new Exception("Invalid list size.");
             }
-            return Head.Data;
+            return _head.Data;
         }
 
         public T? Pop()
@@ -39,13 +41,25 @@ namespace dp.Algorithms
             var result = Head.Data;
             if (Head.Next == null)
             {
-                Head = null;
+                _head = null;
             }
             else
             {
-                Head = Head.Next;
+                _head = _head.Next;
             }
             _size--;
+            return result;
+        }
+
+        public override string ToString()
+        {
+            var result = "";
+            var current = _head;
+            while (current != null)
+            {
+                result += current?.Data?.ToString();
+                current = current?.Next;
+            }
             return result;
         }
     }

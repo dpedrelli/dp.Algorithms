@@ -207,5 +207,15 @@ namespace dp.Algorithms.Tests
             Assert.Equal(6, list.Size);
             Assert.Equal(15, list.PeekEnd());
         }
+
+        [Fact]
+        public void LinkedList_ToString_ConfirmResult()
+        {
+            var list = new LinkedList<int>();
+            list.Append(1);
+            list.Append(2);
+            list.Append(3);
+            Assert.Equal("123", list.ToString());
+        }
     }
 }

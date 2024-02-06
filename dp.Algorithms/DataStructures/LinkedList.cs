@@ -139,5 +139,17 @@ namespace dp.Algorithms
             }
             _size++;
         }
+
+        public override string ToString()
+        {
+            var result = "";
+            var current = _head;
+            while (current != null) 
+            { 
+                result += current?.Data?.ToString();
+                current = current?.Next;
+            }
+            return result;
+        }
     }
 }

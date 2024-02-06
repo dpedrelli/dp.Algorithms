@@ -252,5 +252,15 @@ namespace dp.Algorithms.Tests
                 Assert.NotEqual(11, list.GetNext());
             }
         }
+
+        [Fact]
+        public void DLinkedList_ToString_ConfirmResult()
+        {
+            var list = new LinkedList<int>();
+            list.Append(1);
+            list.Append(2);
+            list.Append(3);
+            Assert.Equal("123", list.ToString());
+        }
     }
 }

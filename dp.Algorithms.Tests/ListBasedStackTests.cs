@@ -82,5 +82,15 @@ namespace dp.Algorithms.Tests
             Assert.True(ls.IsEmpty);
         }
 
+        [Fact]
+        public void ListStack_ToString_ConfirmResult()
+        {
+            var list = new LinkedList<int>();
+            list.Append(1);
+            list.Append(2);
+            list.Append(3);
+            Assert.Equal("123", list.ToString());
+        }
+
     }
 }
