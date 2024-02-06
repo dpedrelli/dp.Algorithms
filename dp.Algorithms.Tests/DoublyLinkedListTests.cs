@@ -228,6 +228,10 @@ namespace dp.Algorithms.Tests
             list.GetNext();
             list.RemoveCurrent();
             Assert.Equal(11, list?.Current?.Data);
+            for (int i = 0; i < list?.Size; i++)
+            {
+                Assert.NotEqual(12, list.GetNext());
+            }
         }
 
         [Fact]
