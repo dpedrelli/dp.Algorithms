@@ -77,7 +77,7 @@ namespace dp.Algorithms.Tests
         }
 
         [Fact]
-        public void Stack_ToString_ConfirmResult()
+        public void ToString_Add123Elements_Equals123()
         {
             var stack = new Stack<int>(5);
             stack.Push(1);

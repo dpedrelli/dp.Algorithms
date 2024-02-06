@@ -83,7 +83,7 @@ namespace dp.Algorithms.Tests
         }
 
         [Fact]
-        public void ListStack_ToString_ConfirmResult()
+        public void ToString_Add123Elements_Equals123()
         {
             var list = new LinkedList<int>();
             list.Append(1);
