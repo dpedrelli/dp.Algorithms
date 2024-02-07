@@ -8,7 +8,7 @@ namespace dp.Algorithms.Sorters
 {
     public static class BubbleSorter
     {
-        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : IComparable
         {
             for (int i = 0; i < array.Length - 1; i++) 
             {

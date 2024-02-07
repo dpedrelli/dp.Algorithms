@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace dp.Algorithms
 {
-    public class Set<T> : DoublyLinkedList<T> where T : IComparable<T>
+    public class Set<T> : DoublyLinkedList<T> where T : IComparable
     {
         public bool Contains(T value)
         {

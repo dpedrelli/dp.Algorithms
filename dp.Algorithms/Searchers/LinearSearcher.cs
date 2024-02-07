@@ -8,7 +8,7 @@ namespace dp.Algorithms.Searchers
 {
     public static class LinearSearcher
     {
-        public static int FindFirst<T>(T[] array, T value) where T : struct, IComparable<T>
+        public static int FindFirst<T>(T[] array, T value) where T : IComparable<T>
         {
             var result = -1;
             for (int i = 0; i < array.Length - 1; i++)
@@ -22,7 +22,7 @@ namespace dp.Algorithms.Searchers
             return result;
         }
 
-        public static int FindLast<T>(T[] array, T value) where T : struct, IComparable<T>
+        public static int FindLast<T>(T[] array, T value) where T : IComparable<T>
         {
             var result = -1;
             for (int i = array.Length - 1; i > -1; i--)
@@ -36,7 +36,7 @@ namespace dp.Algorithms.Searchers
             return result;
         }
 
-        public static int FindNext<T>(T[] array, T value, int current) where T : struct, IComparable<T>
+        public static int FindNext<T>(T[] array, T value, int current) where T : IComparable<T>
         {
             var result = -1;
             for (int i = current + 1; i < array.Length - 1; i++)
@@ -50,11 +50,11 @@ namespace dp.Algorithms.Searchers
             return result;
         }
 
-        public static int RecursiveFind<T>(T[] array, T value) where T : struct, IComparable<T>
+        public static int RecursiveFind<T>(T[] array, T value) where T : IComparable<T>
         {
             return RecursiveFind(array, value, 0);
         }
-        private static int RecursiveFind<T>(T[] array, T value, int index) where T : struct, IComparable<T>
+        private static int RecursiveFind<T>(T[] array, T value, int index) where T : IComparable<T>
         {
             var result = -1;
             if (index > array.Length - 1)

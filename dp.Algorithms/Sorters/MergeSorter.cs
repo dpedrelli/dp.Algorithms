@@ -10,13 +10,13 @@ namespace dp.Algorithms.Sorters
     // https://edutechlearners.com/download/Introduction_to_algorithms-3rd%20Edition.pdf
     public static class MergeSorter
     {
-        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : IComparable
         {
             SortArray(array, 0, array.Length - 1);
             return array;
         }
 
-        private static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : struct, IComparable<T>
+        private static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : IComparable
         {
             if (leftIndex < rightIndex)
             {
@@ -28,7 +28,7 @@ namespace dp.Algorithms.Sorters
             return array;
         }
 
-        private static void Merge<T>(T[] array, int left, int middle, int right) where T : struct, IComparable<T>
+        private static void Merge<T>(T[] array, int left, int middle, int right) where T : IComparable
         {
             var leftLength = (middle - left) + 1;
             var leftArray = new T[leftLength];
@@ -62,7 +62,7 @@ namespace dp.Algorithms.Sorters
             }
         }
 
-        private static void Merge1<T>(T[] array, int left, int middle, int right) where T : struct, IComparable<T>
+        private static void Merge1<T>(T[] array, int left, int middle, int right) where T : IComparable
         {
             // https://code-maze.com/csharp-merge-sort/
             var leftArrayLength = middle - left + 1;

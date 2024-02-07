@@ -8,7 +8,7 @@ namespace dp.Algorithms.Sorters
 {
     public static class HeapSorter
     {
-        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : IComparable
         {
             var n = array.Length;
 
@@ -24,7 +24,7 @@ namespace dp.Algorithms.Sorters
             return array;
         }
 
-        private static void Heapify<T>(T[] array, int n, int i) where T : struct, IComparable<T>
+        private static void Heapify<T>(T[] array, int n, int i) where T : IComparable
         {
             int largest = i;
             var left = 2 * i + 1;

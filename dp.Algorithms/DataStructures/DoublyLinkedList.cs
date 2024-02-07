@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class BaseDoublyLinkedList<T> where T : IComparable<T>
+    public class BaseDoublyLinkedList<T> where T : IComparable
     {
         private DoublyLinkedNode<T>? _head;
         private DoublyLinkedNode<T>? _tail;
@@ -241,7 +241,7 @@ namespace dp.Algorithms
         }
     }
 
-    public class DoublyLinkedList<T> : BaseDoublyLinkedList<T> where T : IComparable<T>
+    public class DoublyLinkedList<T> : BaseDoublyLinkedList<T> where T : IComparable
     {
         public new void Prepend(T? data)
         {

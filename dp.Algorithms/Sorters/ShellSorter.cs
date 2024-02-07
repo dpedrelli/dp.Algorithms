@@ -9,7 +9,7 @@ namespace dp.Algorithms.Sorters
 {
     public static class ShellSorter
     {
-        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : IComparable
         {
             for (int interval = array.Length / 2; interval > 0; interval /= 2)
             {

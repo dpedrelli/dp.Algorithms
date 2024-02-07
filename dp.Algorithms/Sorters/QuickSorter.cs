@@ -7,12 +7,12 @@
 
     public static class QuickSorter
     {
-        public static T[] SortArray<T>(T[] array) where T : struct, IComparable<T>
+        public static T[] SortArray<T>(T[] array) where T : IComparable
         {
             return SortArray<T>(array, 0, array.Length - 1);
         }
 
-        private static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : struct, IComparable<T>
+        private static T[] SortArray<T>(T[] array, int leftIndex, int rightIndex) where T : IComparable
         {
             // Pseudo-code from Introduction to Algorithms, 3rd Edition, page 171.
             int q = 0;
@@ -26,7 +26,7 @@
             return array;
         }
 
-        private static int PartitionArray<T>(T[] array, int p, int r) where T : struct, IComparable<T>
+        private static int PartitionArray<T>(T[] array, int p, int r) where T : IComparable
         {
             var pivot = array[r];
             var i = p - 1;
@@ -44,7 +44,7 @@
             return i + 1;
         }
 
-        //private static bool IsPrivotGreater<T>(T pivot, T compare) where T : struct, IComparable<T>
+        //private static bool IsPrivotGreater<T>(T pivot, T compare) where T : IComparable<T>
         //{
         //    if (pivot.GetType() == typeof(int))
         //    {

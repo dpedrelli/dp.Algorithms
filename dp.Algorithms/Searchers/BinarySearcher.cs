@@ -8,12 +8,12 @@ namespace dp.Algorithms.Searchers
 {
     public static class BinarySearcher
     {
-        public static int Find<T>(T[] array, T value) where T : struct, IComparable<T>
+        public static int Find<T>(T[] array, T value) where T : IComparable
         {
             return Find(array, value, 0, array.Length - 1);
         }
 
-        public static int Find<T>(T[] array, T value, int start, int end) where T : struct, IComparable<T>
+        public static int Find<T>(T[] array, T value, int start, int end) where T : IComparable
         {
             if (start > end) { return -1; }
             var middle = (start + end) / 2;

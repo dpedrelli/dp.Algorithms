@@ -7,7 +7,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace dp.Algorithms
 {
-    public class LinkedList<T> where T : IComparable<T>
+    public class LinkedList<T> where T : IComparable
     {
         private LinkedNode<T>? _head;
         public LinkedNode<T>? Head => _head;

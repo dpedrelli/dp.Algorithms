@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class Tuple
+    public class Tuple : IComparable
     {
         public object Key { get; set; }
         public object Value { get; set; }
@@ -32,6 +32,11 @@ namespace dp.Algorithms
                 return true;
             }
             return false;
+        }
+
+        public int CompareTo(object? obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

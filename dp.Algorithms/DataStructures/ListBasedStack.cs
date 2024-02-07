@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class ListBasedStack<T> where T : IComparable<T>
+    public class ListBasedStack<T> where T : IComparable
     {
         private LinkedNode<T>? _head;
         public LinkedNode<T>? Head => _head;

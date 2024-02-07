@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class ListBasedQueue<T> where T : IComparable<T>
+    public class ListBasedQueue<T> where T : IComparable
     {
         private DoublyLinkedNode<T>? _head;
         private DoublyLinkedNode<T>? _tail;
