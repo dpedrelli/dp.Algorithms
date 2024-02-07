@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class DoublyLinkedList<T> where T : IComparable<T>
+    public class BaseDoublyLinkedList<T> where T : IComparable<T>
     {
         private DoublyLinkedNode<T>? _head;
         private DoublyLinkedNode<T>? _tail;
@@ -18,7 +18,7 @@ namespace dp.Algorithms
         public int Size { get { return _size; } }
         public bool IsEmpty => _size == 0;
 
-        public void Prepend(T? data)
+        protected virtual void Prepend(T? data)
         {
             var node = new DoublyLinkedNode<T>(data);
             node.Next = _head;
@@ -34,7 +34,7 @@ namespace dp.Algorithms
             _size++;
         }
 
-        public void Append(T? data)
+        protected virtual void Append(T? data)
         {
             var node = new DoublyLinkedNode<T>(data);
             node.Previous = _tail;
@@ -50,7 +50,7 @@ namespace dp.Algorithms
             _size++;
         }
 
-        public void InsertAt(T? data, int index)
+        protected virtual void InsertAt(T? data, int index)
         {
             if (index < 0 || index > Size)
             {
@@ -80,7 +80,7 @@ namespace dp.Algorithms
             }
         }
 
-        public T? Peek()
+        protected virtual T? Peek()
         {
             if (_size == 0 || _head == null)
             {
@@ -89,7 +89,7 @@ namespace dp.Algorithms
             return _head!.Data;
         }
 
-        public T? PeekEnd()
+        protected virtual T? PeekEnd()
         {
             if (_size == 0 || _tail == null)
             {
@@ -98,7 +98,7 @@ namespace dp.Algorithms
             return _tail!.Data;
         }
 
-        public T? RemoveFirst()
+        protected virtual T? RemoveFirst()
         {
             if (_size == 0 || _head == null)
             {
@@ -118,7 +118,7 @@ namespace dp.Algorithms
             return data;
         }
 
-        public T? RemoveLast()
+        protected virtual T? RemoveLast()
         {
             if (_size == 0 || _head == null)
             {
@@ -138,7 +138,7 @@ namespace dp.Algorithms
             return data;
         }
 
-        public T? RemoveAt(int index)
+        protected virtual T? RemoveAt(int index)
         {
             if (index < 0 || index > Size)
             {
@@ -214,7 +214,7 @@ namespace dp.Algorithms
             _size--;
         }
 
-        public void DeleteAll(T? value)
+        protected virtual void DeleteAll(T? value)
         {
             Reset();
             var data = GetNext();
@@ -238,6 +238,54 @@ namespace dp.Algorithms
                 current = current?.Next;
             }
             return result;
+        }
+    }
+
+    public class DoublyLinkedList<T> : BaseDoublyLinkedList<T> where T : IComparable<T>
+    {
+        public new void Prepend(T? data)
+        {
+            base.Prepend(data);
+        }
+
+        public new void Append(T? data)
+        { 
+            base.Append(data); 
+        }
+
+        public new void InsertAt(T? data, int index)
+        { 
+            base.InsertAt(data, index);
+        }
+
+        public new T? Peek()
+        { 
+            return base.Peek(); 
+        }
+
+        public new T? PeekEnd()
+        {
+            return base.PeekEnd();
+        }
+
+        public new T? RemoveFirst()
+        {
+            return base.RemoveFirst();
+        }
+
+        public new T? RemoveLast()
+        {
+            return base.RemoveLast();
+        }
+
+        public new T? RemoveAt(int index)
+        {
+            return base.RemoveAt(index);
+        }
+
+        public new void DeleteAll(T? value)
+        {
+            base.DeleteAll(value);
         }
     }
 }
