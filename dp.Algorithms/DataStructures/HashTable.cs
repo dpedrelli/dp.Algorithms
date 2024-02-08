@@ -90,7 +90,7 @@ namespace dp.Algorithms
             var current = _hashTable[index].GetNext();
             while (current != null)
             {
-                if (current.Key == key)
+                if (current.Key.Equals(key))
                 {
                     var value = current.Value;
                     _hashTable[index].RemoveCurrent();
@@ -109,7 +109,7 @@ namespace dp.Algorithms
             var current = _hashTable[index].GetNext();
             while (current != null)
             {
-                if (current.Key == key)
+                if (current.Key.Equals(key))
                 {
                     return true;
                 }
@@ -126,7 +126,7 @@ namespace dp.Algorithms
                 var current = _hashTable[i].GetNext();
                 while (current != null)
                 {
-                    if (current.Value == value)
+                    if (current.Value.Equals(value))
                     {
                         return true;
                     }
