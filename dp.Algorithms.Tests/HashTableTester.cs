@@ -96,5 +96,39 @@ namespace dp.Algorithms.Tests
             }
             Assert.Equal(32, table.Capacity);
         }
+
+        [Fact]
+        public void Iteration_GetNextOnEmpty_ReturnsNull()
+        {
+            var table = new HashTable();
+            table.Reset();
+            Assert.Null(table.GetNext());
+        }
+        [Fact]
+        public void Iteration_GetNext_ReturnsObject()
+        {
+            var table = new HashTable();
+            for (int i = 0; i < 16; i++)
+            {
+                table.Put("Key" + i.ToString(), "Value" + i.ToString());
+            }
+            table.Reset();
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+            Assert.NotNull(table.GetNext());
+        }
     }
 }

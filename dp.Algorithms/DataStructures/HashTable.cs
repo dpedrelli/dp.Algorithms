@@ -16,6 +16,7 @@ namespace dp.Algorithms
         private DoublyLinkedList<Tuple>[] _hashTable;
         private int _capacity;
         public int Capacity => _capacity;
+        private int _currentArrayElement = 0;
 
         public HashTable(int initialCapacity = 16)
         {
@@ -214,6 +215,28 @@ namespace dp.Algorithms
 
                 return hash1 + (hash2 * 1566083941);
             }
+        }
+
+        public void Reset()
+        {
+            for (int i = 0; i < _capacity; i++)
+            {
+                _hashTable[i].Reset();
+            }
+        }
+
+        public object? GetNext()
+        {
+            Tuple? current = null;
+            while (current == null && _currentArrayElement < _hashTable.Length)
+            {
+                current = _hashTable[_currentArrayElement].GetNext();
+                if (current == null)
+                {
+                    _currentArrayElement++;
+                }
+            }
+            return current?.Value;
         }
 
     }
