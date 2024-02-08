@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace dp.Algorithms
 {
-    public class BaseHashTable
+    public class HashTable
     {
         private int _size;
         public int Size => _size;
         public bool IsEmpty => _size == 0;
         private double _loadFactor = 0.75;
-        protected DoublyLinkedList<Tuple>[] _hashTable;
+        private DoublyLinkedList<Tuple>[] _hashTable;
         private int _capacity;
         public int Capacity => _capacity;
 
-        public BaseHashTable(int initialCapacity = 16)
+        public HashTable(int initialCapacity = 16)
         {
             _capacity = initialCapacity;
             _hashTable = new DoublyLinkedList<Tuple>[_capacity];
@@ -42,7 +42,7 @@ namespace dp.Algorithms
             return hashCode % _capacity;
         }
 
-        protected virtual void Put(object key, object value) 
+        public void Put(object key, object value) 
         { 
             var index = ComputeIndex(key);
             _hashTable[index].Reset();
@@ -66,7 +66,7 @@ namespace dp.Algorithms
             }
         }
 
-        protected virtual object? Get(object key) 
+        public object? Get(object key) 
         {
             var index = ComputeIndex(key);
             _hashTable[index].Reset();
@@ -82,7 +82,7 @@ namespace dp.Algorithms
             return null;
         }
 
-        protected virtual object? Remove(object key) 
+        public object? Remove(object key) 
         {
             var index = ComputeIndex(key);
             _hashTable[index].Reset();
@@ -101,7 +101,7 @@ namespace dp.Algorithms
             return null;
         }
 
-        protected virtual bool ContainsKey(object key)
+        public bool ContainsKey(object key)
         {
             var index = ComputeIndex(key);
             _hashTable[index].Reset();
@@ -117,7 +117,7 @@ namespace dp.Algorithms
             return false;
         }
 
-        protected virtual bool ContainsValue(object value)
+        public bool ContainsValue(object value)
         {
             for (int i = 0; i < Capacity; i++)
             {
@@ -135,21 +135,21 @@ namespace dp.Algorithms
             return false;
         }
 
-        //public BaseHashTable Copy()
-        //{
-        //    var newHashTable = new BaseHashTable(Capacity);
-        //    for (int i = 0; i < Capacity; i++)
-        //    {
-        //        _hashTable[i].Reset();
-        //        var current = _hashTable[i].GetNext();
-        //        while (current != null)
-        //        {
-        //            newHashTable.Put(current.Key, current.Value);
-        //            current = _hashTable[i].GetNext();
-        //        }
-        //    }
-        //    return newHashTable;
-        //}
+        public HashTable Copy()
+        {
+            var newHashTable = new HashTable(Capacity);
+            for (int i = 0; i < Capacity; i++)
+            {
+                _hashTable[i].Reset();
+                var current = _hashTable[i].GetNext();
+                while (current != null)
+                {
+                    newHashTable.Put(current.Key, current.Value);
+                    current = _hashTable[i].GetNext();
+                }
+            }
+            return newHashTable;
+        }
 
         public override string ToString()
         {
@@ -218,56 +218,4 @@ namespace dp.Algorithms
 
     }
 
-    public class HashTable : BaseHashTable
-    {
-        public HashTable() : base()
-        {
-
-        }
-        public HashTable(int capacity) : base(capacity)
-        {
-            
-        }
-
-        public new void Put(object key, object value)
-        {
-            base.Put(key, value);
-        }
-
-        public new object? Get(object key)
-        { 
-            return base.Get(key); 
-        }
-
-        public new object? Remove(object key)
-        { 
-            return base.Remove(key); 
-        }
-
-        public new bool ContainsKey(object key)
-        { 
-            return base.ContainsKey(key); 
-        }
-
-        public new bool ContainsValue(object value)
-        { 
-            return base.ContainsValue(value); 
-        }
-
-        public HashTable Copy()
-        {
-            var newHashTable = new HashTable(Capacity);
-            for (int i = 0; i < Capacity; i++)
-            {
-                _hashTable[i].Reset();
-                var current = _hashTable[i].GetNext();
-                while (current != null)
-                {
-                    newHashTable.Put(current.Key, current.Value);
-                    current = _hashTable[i].GetNext();
-                }
-            }
-            return newHashTable;
-        }
-    }
 }
